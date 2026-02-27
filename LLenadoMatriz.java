@@ -5,16 +5,13 @@ public class LLenadoMatriz {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = 0;
-        System.out.println("Ingrese la dimension de la matriz");
+        System.out.println("Ingrese la dimension del almacen");
         n = sc.nextInt();
         int[][] m = new int[n][n];
         Metodos M = new Metodos();
         m = M.LlenarMatriz(m);
         M.MostrarMatriz(m);
-        System.out.println("Ahora vamos a validar con matriz objetual");
-        Obj[][] Mo = new Obj[n][n];
-        Mo = M.LlenarMatriz(Mo);
-        M.MostrarMatriz(Mo);
+        
 
         System.out.println("vamos a llenar la matriz objetual con los valores de descripcion, cantidad y precio");
         ObjVillalobos[][] villalobos = new ObjVillalobos[n][n];
