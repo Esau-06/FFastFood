@@ -1,33 +1,26 @@
 public class ObjVillalobos {
-    private String Descripcion;
-    private int Cantidad;
+    private String Nombre;
+    private int Stock;
     private Double Precio;
-
-    public ObjVillalobos() {
+    
+    public String getNombre() {
+        return Nombre;
     }
-
-    public String getDescripcion() {
-        return Descripcion;
+    public void setNombre(String nombre) {
+        Nombre = nombre;
     }
-
-    public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+    public int getStock() {
+        return Stock;
     }
-
-    public int getCantidad() {
-        return Cantidad;
+    public void setStock(int stock) {
+        Stock = stock;
     }
-
-    public void setCantidad(int cantidad) {
-        Cantidad = cantidad;
-    }
-
     public Double getPrecio() {
         return Precio;
     }
-
     public void setPrecio(Double precio) {
         Precio = precio;
     }
 
+    
 }

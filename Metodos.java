@@ -49,26 +49,51 @@ public class Metodos {
         }
     }
 
-    public ObjVillalobos[][] FucionarMatrices(ObjVillalobos[][] m, ObjVillalobos[][] m2, ObjVillalobos[][] mr) {
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m.length; j++) {
-                for (int i1 = 0; i1 < m.length; i1++) {
-                    for (int j1 = 0; j1 < m.length; j1++) {
-                        if (m[i][j].getNombre().equalsIgnoreCase(m2[i1][j1].getNombre())) {
-                            m[i][j].setStock(m[i][j].getStock() + m2[i1][j1].getStock());
-                        }
+    public ObjVillalobos[][] FusionarMatrices(ObjVillalobos[][] m1,ObjVillalobos[][] m2) {
+
+    int n = m1.length;
+    ObjVillalobos[][] resultado = new ObjVillalobos[n][n];
+
+    // 1️⃣ Copiar primera tienda
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            resultado[i][j] = m1[i][j];
+        }
+    }
+
+    // 2️⃣ Recorrer segunda tienda
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+
+            ObjVillalobos producto2 = m2[i][j];
+            boolean encontrado = false;
+
+            // Buscar si ya existe en resultado
+            for (int x = 0; x < n; x++) {
+                for (int y = 0; y < n; y++) {
+
+                    if (resultado[x][y] != null && resultado[x][y].getNombre().equalsIgnoreCase(producto2.getNombre())) {
+
+                        // Si existe → sumar stock
+                        int nuevoStock =
+                                resultado[x][y].getStock() +
+                                producto2.getStock();
+
+                        resultado[x][y].setStock(nuevoStock);
+                        encontrado = true;
+                        break;
                     }
                 }
+                if (encontrado) break;
+            }
+
+            // Si no existe → agregarlo en la misma posición
+            if (!encontrado) {
+                resultado[i][j] = producto2;
             }
         }
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m.length; j++) {
-                m[i][j].setStock(m[i][j].getStock());
-                m[i][j].setNombre(m[i][j].getNombre());
-                m[i][j].setPrecio(m[i][j].getPrecio());
-            }
-        }
-        return m;
     }
-    
+
+    return resultado;
+    }
 }
